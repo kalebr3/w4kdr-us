@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Inter;
+    src: url(/fonts/Inter.ttf) format("truetype");
+  }
+  html {
+    font-feature-settings: "cpsp", "tnum", "zero", "ss01";
+  }
+}
