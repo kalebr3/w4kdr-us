@@ -6,7 +6,7 @@ export default function APODCard({ apod }) {
   switch (apod.media_type) {
     case "image": {
       return (
-        <div className="m-2 p-4 grid gap-6 grid-col-1 lg:grid-cols-12">
+        <div className="m-2 p-4 grid gap-6 grid-col-1 lg:grid-cols-12 bg-gray-200">
           <div className="lg:col-span-5">
             <img src={apod.url} alt={apod.title} />
           </div>
@@ -21,7 +21,7 @@ export default function APODCard({ apod }) {
     }
     case "video": {
       return (
-        <div className="m-2 p-4 grid gap-6 grid-col-1 lg:grid-cols-12">
+        <div className="m-2 p-4 grid gap-6 grid-col-1 lg:grid-cols-12 bg-gray-200">
           <div className="lg:col-span-5">
             <iframe
               className="w-full h-full"
