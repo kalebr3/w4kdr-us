@@ -1,14 +1,14 @@
 import Layout from "components/common/layout";
 
-import { getPostBySlug } from "utils/api";
+import { getPostBySlug } from "services/LocalMarkdown";
 import md2html from "utils/md2html";
 
 export default function Home({ post }) {
   return (
     <Layout heading="Home">
-      <div className="flex justify-center">
+      <div className="flex justify-center px-6 py-10">
         <article
-          className="prose p-6"
+          className="prose"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </div>
