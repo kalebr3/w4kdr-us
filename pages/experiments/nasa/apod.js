@@ -1,35 +1,35 @@
-import useSWR from "swr";
+import { useState, useEffect } from "react";
 
 import Layout from "components/common/layout";
-import ErrorBanner from "components/common/ErrorBanner";
-import RefreshIcon from "components/common/svg/refreshIcon";
 
-import { getPostBySlug } from "utils/api";
+import { getPostBySlug } from "services/LocalMarkdown";
 import md2html from "utils/md2html";
 
-import { getNASA } from "services/NASA";
+import { getAPOD } from "services/NASA";
 import APODCard from "components/apodCard";
 
 export default function APOD({ post }) {
-  const { data, error } = useSWR("/planetary/apod/", getNASA);
+  const [apod, setAPOD] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getAPOD();
+      setAPOD(response.data);
+    };
+    fetchData();
+  }, []);
+
   return (
-    <Layout heading="NASA APOD">
+    <Layout heading="NASA Astronomy Picture of the Day">
       <div className="flex justify-center">
         <article
-          className="prose p-6"
+          className="prose p-4"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </div>
-      {error ? (
-        <ErrorBanner
-          title="Something Went Wrong"
-          body="Unable to load the NASA Astronomy Picture of the Day"
-        />
-      ) : !data ? (
-        <RefreshIcon />
-      ) : (
-        <APODCard apod={data} />
-      )}
+      <div className="bg-gray-200">
+        <APODCard apod={apod} />
+      </div>
     </Layout>
   );
 }
