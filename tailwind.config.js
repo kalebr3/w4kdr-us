@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        "space-pattern": "url('/src/assets/space-pattern.svg')",
+        "space-pattern": "url('/assets/space-pattern.svg')",
       }),
       spacing: {
         "25rem": "25rem",
