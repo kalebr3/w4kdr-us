@@ -1,7 +1,7 @@
 import Layout from "components/common/layout";
 import { useState, useEffect } from "react";
 import { getUpcoming } from "services/LaunchLibrary";
-import _ from "lodash";
+import range from "utils/range";
 import PaginatedContainer from "components/paginatedContainer";
 import LaunchCard from "components/launchCard";
 
@@ -29,9 +29,9 @@ export default function UpcomingLaunches({ post }) {
     fetchData();
   }, [limit, offset]);
 
-  const pages = _.range(1, _.ceil(totalRecords / limit) + 1);
-  const firstPage = _.min(pages);
-  const lastPage = _.max(pages);
+  const pages = range(1, Math.ceil(totalRecords / limit));
+  const firstPage = Math.min(pages);
+  const lastPage = Math.max(pages);
   const nextPage = currentPage + 1;
   const prevPage = currentPage - 1;
 
