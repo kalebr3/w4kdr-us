@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
 import Layout from "components/common/layout";
+import APODCard from "components/apodCard";
 
 import { getPostBySlug } from "services/LocalMarkdown";
 import md2html from "utils/md2html";
 
 import { getAPOD } from "services/NASA";
-import APODCard from "components/apodCard";
 
 export default function APOD({ post }) {
   const [apod, setAPOD] = useState({});
