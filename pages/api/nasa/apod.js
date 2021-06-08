@@ -2,6 +2,9 @@ import axios from "axios";
 
 const nasa = axios.create({
   baseURL: "https://api.nasa.gov",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 export default async (_, res) => {
