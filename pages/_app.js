@@ -1,10 +1,17 @@
 import Head from "next/head";
+import { SWRConfig } from "swr";
+
+import axios from "axios";
 
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <SWRConfig
+      value={{
+        fetcher: (resource) => axios.get(resource).then((res) => res.data),
+      }}
+    >
       <Head>
         <meta charSet="utf-8" />
         <meta
@@ -13,7 +20,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <Component {...pageProps} />
-    </>
+    </SWRConfig>
   );
 }
 
